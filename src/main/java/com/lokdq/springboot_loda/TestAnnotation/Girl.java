@@ -1,9 +1,12 @@
-package com.lokdq.springboot_loda;
+package com.lokdq.springboot_loda.TestAnnotation;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 
 @Component
 public class Girl {
@@ -32,4 +35,15 @@ public class Girl {
         this.outfit = outfit;
     }
 
+    //được dánh dấu 1 method duy nhất trong Bean, App_Context sẽ goi hàm này sau khi Bean đc tạo
+    @PostConstruct
+    public void postConstruct(){
+        System.out.println("Đối tượng sau khi khởi tạo xong sẽ chạy hàm này ");
+    }
+
+    //được đánh dấy trên 1 method và xóa hoặc ko quản lý khi Bean bị xóa
+    @PreDestroy
+    public void preDestroy(){
+        System.out.println("Đối tượng sau khi bị destroy sẽ chạy hàm này");
+    }
 }

@@ -1,0 +1,6 @@
+#spring amazone
+spring:
+  datasource:
+    username: xxx
+    password: xxx
+    url: jdbc:mysql://10.127.24.12:2030/news?useSSL=false&characterEncoding=UTF-8

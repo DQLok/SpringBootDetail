@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lok</title>
+    <!--css-->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+    <!--js-->
+    <script th:src="@{/js/bootstrap.js}"></script>
+</head>
+<body>
+    <h1 th:utext="#{lok.hello}"></h1>
+    <h2>Lok Profile</h2>
+
+    <ul>
+        <li th:each="info : ${lokProfile}">
+            <span th:text="*{info.key}"></span>:<span th:text="*{info.value}"></span>
+        </li>
+    </ul>
+</body>
+</html>

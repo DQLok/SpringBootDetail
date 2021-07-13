@@ -1,0 +1,10 @@
+#application.yml
+---
+spring.profiles: local
+spring.profiles.include: common, local
+#load common.yml và local.yml
+---
+spring.profiles: aws
+spring.profiles.include: common, aws
+#load common.yml và aws.yml
+---

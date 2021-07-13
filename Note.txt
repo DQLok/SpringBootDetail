@@ -1,0 +1,49 @@
+1) Thymeleaf là một java Template Engine. có nhiệm vụ xử lý và generate ra các file HTML,XML,...
+HTML(Thyeleaf)= dữu liệu & template+quy tắc
+********* resource chứa .propertity và i18n, templates chứa html, static chưa js và css*****
+Cú pháp Thy là một attributes bắt đầu bằng chữ th:
+ Model được sử dụng là 1 obj Context of Thy, model có dạng là key-value
+ lấy thông tin model
+ ${}: giá trị của biến ( Variables Expressions)
+    Controller: model.addAttribute("today", "Monday");
+    HTML: <p>Today is:<span th:text="${today}"/></p>
+    => Đoạn expression trên tương đương với:
+       ctx.getVariable("today");
+ *{}:giá trị của một biến được chỉ định (Variables Expressions on selections)
+    <div th:object="${session.user}">
+        <p>Name: <span th:text="*{firstname}"/> </p>
+    <div/>
+ #{}: lấy message
+    trong file .properties
+    home.welcome=¡Bienvenido a nuestra tienda de comestibles!
+    HTML:  <p th:utext="#{home.welcome}"> đoạn này sẽ thay đổi tùy theo # </p>
+ @{}: lấy đường dẫn url dựa theo context của server
+    <!-- tương đương với 'http://localhost:8080/order/details?orderId=3' -->
+    <a href="details.html" th:href="@{http://localhost:8080/order/details(orderId=${o.id})}">
+       view
+    </a>
+    note bắt đầu bằng / thì là theo context của máy chủ
+
+2) Restful API  là một tiêu chuẩn dùng trong việc thết kế các thiết kế API
+cho các ứng dụng web để quản lý các resource.
+- với một cách thống nhất này nằm ở URL của API
+vd: https://localhost:8081//springboot/user/12
+
+3) Spring Profiles là một core feature trong Spring Framework, cho phép chúng ta cấu hình ứng dụng,
+active/deactive Bean tùy theo môi trường.
+config file là file cấu hình
+Spring Profile để hỗ trợ spring giải quyết config, có sẵn và ko cần thêm thư viện nào
+application.properties
+application.yml
+application-{profile-name}.yml // .properties
+
+3)Test sử dụng
+@SpringBootTest sẽ tìm @SpringBootApplication tìm toàn bộ Bean nạp vào context test
+@TestConfiguration giống với @Configuration, chúng ta tự định nghĩa ra Bean.
+Spring hỗ trợ mock với annotation @MockBean, chúng ta có thể mock lấy ra một Bean "giả" mà không thèm để ý tới thằng Bean "thật".
+(Kể cả thằng "thật" có ở trong Context đi nữa, cũng không quan tâm).
+
+4)Security phân quyền người dùng để truy cập vào các tài nguyên
+JWT (Json web Token) là một chuỗi mã hóa được gửi kèm trong Header của client request
+có tác dụng giúp phía server xác thực request người dùng có hợp lệ hay không.
+Được sử dụng phổ biến trong các hệ thống API ngày nay.

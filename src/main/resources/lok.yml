@@ -1,0 +1,9 @@
+lok:
+  email: wkhhkw01@gmail.com
+  googleAnalyticsID: U-xxxxx
+  authors:
+    -lok
+    -diep
+  exampleMap:
+    key1: hello
+    key2: world
